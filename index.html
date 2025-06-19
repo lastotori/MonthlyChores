@@ -2,57 +2,40 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Monthly House Chore Checklist</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      margin: 20px;
-      padding: 0;
+      margin: 40px;
       background-color: #fdfdfd;
       color: #333;
     }
-
     h1 {
       text-align: center;
-      font-size: 24px;
-      padding: 0 10px;
+      font-size: 28px;
     }
-
     h2 {
-      font-size: 20px;
       color: #2c3e50;
       margin-top: 30px;
       border-bottom: 2px solid #ccc;
       padding-bottom: 5px;
     }
-
     ul {
       list-style: none;
       padding-left: 0;
     }
-
     li {
-      margin-bottom: 10px;
-      line-height: 1.4;
+      margin-bottom: 8px;
     }
-
     label {
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      font-size: 16px;
     }
-
     input[type="checkbox"] {
-      margin-right: 12px;
-      transform: scale(1.2);
+      margin-right: 10px;
     }
-
     .section {
       margin-bottom: 40px;
     }
-
     .progress-container {
       position: relative;
       background: #eee;
@@ -62,14 +45,12 @@
       margin-bottom: 15px;
       width: 100%;
     }
-
     .progress-bar {
       height: 100%;
       width: 0%;
       background-color: #2ecc71;
       transition: width 0.3s ease;
     }
-
     .progress-percent {
       position: absolute;
       top: 0;
@@ -78,41 +59,36 @@
       line-height: 24px;
       font-weight: bold;
       color: #000;
-      font-size: 14px;
     }
+    .section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-    /* Responsive styles for small screens */
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 20px;
-      }
+.reset-button {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
 
-      h2 {
-        font-size: 18px;
-      }
-
-      label {
-        font-size: 15px;
-      }
-
-      .progress-container {
-        height: 20px;
-      }
-
-      .progress-percent {
-        font-size: 12px;
-      }
-    }
+.reset-button:hover {
+  background-color: #c0392b;
+}
   </style>
 </head>
-
 <body>
 
 <h1>Monthly House Chore Checklist</h1>
 
 <!-- Section Template -->
 <div class="section" id="daily">
-  <h2>Daily Chores</h2>
+  <h2>Daily Chores <button style="float: right;" class="reset-button" onclick="resetSection('daily')">Clear</button></h2>
   <div class="progress-container">
     <div class="progress-bar" id="daily-bar"></div>
     <div class="progress-percent" id="daily-percent">0%</div>
@@ -135,7 +111,7 @@
 </div>
 
 <div class="section" id="weekly">
-  <h2>Weekly Chores</h2>
+  <h2>Weekly Chores  <button style="float: right;" class="reset-button" onclick="resetSection('weekly')">Clear</button> </h2>
   <div class="progress-container">
     <div class="progress-bar" id="weekly-bar"></div>
     <div class="progress-percent" id="weekly-percent">0%</div>
@@ -175,7 +151,7 @@
 </div>
 
 <div class="section" id="monthly">
-  <h2>Monthly Chores</h2>
+  <h2>Monthly Chores  <button style="float: right;" class="reset-button" onclick="resetSection('monthly')">Clear</button></h2>
   <div class="progress-container">
     <div class="progress-bar" id="monthly-bar"></div>
     <div class="progress-percent" id="monthly-percent">0%</div>
@@ -187,28 +163,7 @@
     <li><label><input type="checkbox" class="monthly">Replace HVAC filters</label></li>
     <li><label><input type="checkbox" class="monthly">Rotate/flip mattresses</label></li>
     <li><label><input type="checkbox" class="monthly">Clean under beds and furniture</label></li>
-    <li><label><input type="checkbox" class="monthly">Declutter closets and drawers</label></li>
-    <li><label><input type="checkbox" class="monthly">Clean inside fridge and freezer</label></li>
-    <li><label><input type="checkbox" class="monthly">Clean oven and range hood</label></li>
-    <li><label><input type="checkbox" class="monthly">Sanitize kitchen garbage can</label></li>
-    <li><label><input type="checkbox" class="monthly">Inventory pantry and discard expired items</label></li>
-    <li><label><input type="checkbox" class="monthly">Wash shower curtain/liner</label></li>
-    <li><label><input type="checkbox" class="monthly">Deep clean bathroom grout and tile</label></li>
-    <li><label><input type="checkbox" class="monthly">Clean behind toilet base</label></li>
-    <li><label><input type="checkbox" class="monthly">Clean under rugs</label></li>
-    <li><label><input type="checkbox" class="monthly">Wipe light fixtures and fans</label></li>
-    <li><label><input type="checkbox" class="monthly">Polish wood furniture</label></li>
-    <li><label><input type="checkbox" class="monthly">Run washer cleaning cycle</label></li>
-    <li><label><input type="checkbox" class="monthly">Clean behind washer/dryer</label></li>
-    <li><label><input type="checkbox" class="monthly">Organize craft supplies</label></li>
-    <li><label><input type="checkbox" class="monthly">Dust/sweep furnace area</label></li>
-    <li><label><input type="checkbox" class="monthly">Check furnace filter/clogs</label></li>
-    <li><label><input type="checkbox" class="monthly">Disinfect litter boxes</label></li>
-    <li><label><input type="checkbox" class="monthly">Trim shrubs and hedges</label></li>
-    <li><label><input type="checkbox" class="monthly">Weed flower beds</label></li>
-    <li><label><input type="checkbox" class="monthly">Clean patio furniture</label></li>
-    <li><label><input type="checkbox" class="monthly">Inspect gutters</label></li>
-    <li><label><input type="checkbox" class="monthly">Power wash porch or deck (seasonal)</label></li>
+    <!-- Add more chores as needed -->
   </ul>
 </div>
 
@@ -257,6 +212,14 @@
   // Initial load
   loadProgress();
   sections.forEach(s => updateProgress(s.class, s.bar, s.percent));
+  
+  function resetSection(sectionClass) {
+  const checkboxes = document.querySelectorAll(`input.${sectionClass}`);
+  checkboxes.forEach(cb => cb.checked = false);
+  saveProgress();
+  sections.forEach(s => updateProgress(s.class, s.bar, s.percent));
+}
+  
 </script>
 
 </body>
