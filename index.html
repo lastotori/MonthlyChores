@@ -169,6 +169,30 @@
 </div>
 
 <script>
+  const sections = [
+    { class: 'daily', bar: 'daily-bar', percent: 'daily-percent' },
+    { class: 'weekly', bar: 'weekly-bar', percent: 'weekly-percent' },
+    { class: 'monthly', bar: 'monthly-bar', percent: 'monthly-percent' },
+  ];
+
+  // Save checkbox states to localStorage
+  function saveProgress() {
+    const data = {};
+    document.querySelectorAll('input[type="checkbox"]').forEach((cb, i) => {
+      data[i] = cb.checked;
+    });
+    localStorage.setItem('choreChecklist', JSON.stringify(data));
+  }
+
+  // Load checkbox states from localStorage
+  function loadProgress() {
+    const data = JSON.parse(localStorage.getItem('choreChecklist') || '{}');
+    document.querySelectorAll('input[type="checkbox"]').forEach((cb, i) => {
+      cb.checked = !!data[i];
+    });
+  }
+
+  // Update progress bars
   function updateProgress(sectionClass, barId, percentId) {
     const checkboxes = document.querySelectorAll(`input.${sectionClass}`);
     const checked = Array.from(checkboxes).filter(cb => cb.checked).length;
@@ -178,19 +202,16 @@
     document.getElementById(percentId).innerText = percent + '%';
   }
 
-  const sections = [
-    { class: 'daily', bar: 'daily-bar', percent: 'daily-percent' },
-    { class: 'weekly', bar: 'weekly-bar', percent: 'weekly-percent' },
-    { class: 'monthly', bar: 'monthly-bar', percent: 'monthly-percent' },
-  ];
-
+  // Hook up event listeners
   document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
     cb.addEventListener('change', () => {
+      saveProgress();
       sections.forEach(s => updateProgress(s.class, s.bar, s.percent));
     });
   });
 
-  // Initial update
+  // Initial load
+  loadProgress();
   sections.forEach(s => updateProgress(s.class, s.bar, s.percent));
 </script>
 
